@@ -11,4 +11,8 @@ class AWS_DNS implements DNSInterface {
         println 'add DNS record with AWS'
         println 'cat /../../../resources/myscript'.execute().text
     }
+
+    def String getThing() {
+        return 'thing'
+    }
 }
