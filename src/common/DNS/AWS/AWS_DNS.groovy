@@ -1,5 +1,7 @@
 package common.DNS.AWS
 
+import common.DNS.DNSInterface
+
 class AWS_DNS implements DNSInterface {
     AWS_DNS() {
         
