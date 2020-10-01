@@ -9,7 +9,7 @@ class AWS_DNS implements DNSInterface {
 
     def void addRecord() {
         println 'add DNS record with AWS'
-        println 'cat /../../../resources/myscript'.execute().text
+        println 'cat ./../../../resources/myscript'.execute().text
     }
 
     def String getThing() {
@@ -17,7 +17,7 @@ class AWS_DNS implements DNSInterface {
     }
 
     def String readScript() {
-        def text = 'cat /../../../resources/myscript'.execute().text
-        return text
+        String fileContents = new File('../../../../resources/myscript').text
+        return fileContents
     }
 }
