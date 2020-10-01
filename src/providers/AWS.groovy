@@ -1,5 +1,6 @@
 package providers
 
+import common.DNS.AWS
 
 class AWS {
     AWS() {
