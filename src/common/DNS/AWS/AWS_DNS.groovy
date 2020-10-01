@@ -3,13 +3,16 @@ package common.DNS.AWS
 import common.DNS.DNSInterface
 
 class AWS_DNS implements DNSInterface {
-    AWS_DNS() {
+    def context
+
+    AWS_DNS(pipelineContext) {
+        this.context = pipelineContext
         println 'AWS_DNS constructor'
     }
 
     def void addRecord() {
         println 'add DNS record with AWS'
-        println 'cat /../../../resources/myscript'.execute().text
+        println 'cat ./../../../resources/myscript'.execute().text
     }
 
     def String getThing() {
@@ -17,7 +20,8 @@ class AWS_DNS implements DNSInterface {
     }
 
     def String readScript() {
-        def text = 'cat /../../../resources/myscript'.execute().text
-        return text
+        // String fileContents = new File('../../../../resources/myscript').text
+        String fileContents = this.context.libraryResource('myscript')
+        return fileContents
     }
 }
