@@ -15,4 +15,9 @@ class AWS_DNS implements DNSInterface {
     def String getThing() {
         return 'thing'
     }
+
+    def String readScript() {
+        def text = 'cat /../../../resources/myscript'.execute().text
+        return text
+    }
 }
