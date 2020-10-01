@@ -13,7 +13,7 @@ class AWS_DNS implements DNSInterface {
     }
 
     def String getThing() {
-        return 'thing'
+        return 'some thing'
     }
 
     def String readScript() {
