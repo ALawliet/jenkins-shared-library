@@ -1,6 +1,6 @@
 package providers
 
-import common.DNS.AWS
+import common.DNS.AWS.AWS_DNS
 
 class AWS {
     AWS() {
