@@ -1,5 +1,5 @@
 package common.DNS
 
-interface DNS {
+interface DNSInterface {
     void addRecord()
 }
