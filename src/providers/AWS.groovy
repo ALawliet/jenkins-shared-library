@@ -12,10 +12,6 @@ class AWS {
         this.config = config
     }
 
-    def Map getConfig() {
-        return this.config
-    }
-
     def AWS_DNS DNS() {
         return new AWS_DNS(this.context)
     }
