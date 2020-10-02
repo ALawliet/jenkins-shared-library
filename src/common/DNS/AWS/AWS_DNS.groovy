@@ -47,9 +47,9 @@ class AWS_DNS implements DNSInterface {
         def terraformscript = this.context.libraryResource './terraform/main.tf'
         this.context.writeFile file: './terraform/main.tf', text: terraformscript
         def parser = new JsonSlurper()
-        String vars = JsonOutput.prettyPrint(JsonOutput.toJson(resourceConfig))
-        def json = parser.parseText(vars)
-        this.context.writeJSON file: './terraform/terraform.tfvars.json', json: resourceConfig
+        String jsonStrVars = JsonOutput.prettyPrint(JsonOutput.toJson(resourceConfig))
+        def jsonVars = parser.parseText(jsonStrVars)
+        this.context.writeJSON file: './terraform/terraform.tfvars.json', json: jsonStrVars
         this.context.dir('./terraform') {
             this.context.sh 'terraform init'
             this.context.sh 'terraform validate'
