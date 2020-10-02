@@ -2,6 +2,7 @@ package common.DNS.AWS
 
 import common.DNS.DNSInterface
 import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
 
 class AWS_DNS implements DNSInterface {
     def context
@@ -45,8 +46,9 @@ class AWS_DNS implements DNSInterface {
     def void executeTerraformWithVars(Map resourceConfig) {
         def terraformscript = this.context.libraryResource './terraform/main.tf'
         this.context.writeFile file: './terraform/main.tf', text: terraformscript
+        def parser = new JsonSlurper()
         String vars = JsonOutput.prettyPrint(JsonOutput.toJson(resourceConfig))
-        this.context.writeFile file: './terraform/terraform.tfvars.json', text: vars
+        this.context.writeFile file: './terraform/terraform.tfvars.json', text: parser.parseText(vars)
         this.context.dir('./terraform') {
             this.context.sh 'terraform init'
             this.context.sh 'terraform validate'
