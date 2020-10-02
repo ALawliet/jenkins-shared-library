@@ -1,6 +1,7 @@
 package common.DNS.AWS
 
 import common.DNS.DNSInterface
+import groovy.json.JsonOutput
 
 class AWS_DNS implements DNSInterface {
     def context
@@ -8,6 +9,11 @@ class AWS_DNS implements DNSInterface {
     AWS_DNS(pipelineContext) {
         this.context = pipelineContext
         println 'AWS_DNS constructor'
+    }
+
+    def String getResourceConfigAsJSON(Map resourceConfig) {
+        String json = JsonOutput.prettyPrint(JsonOutput.toJson(resourceConfig))
+        return json
     }
 
     def Map addRecord(Map resourceConfig) {
