@@ -4,7 +4,7 @@ import common.DNS.AWS.AWS_DNS
 
 class AWS {
     def context
-    def config
+    def providerConfig
 
     AWS(pipelineContext, Map providerConfig) {
         println 'AWS constructor'
