@@ -49,7 +49,7 @@ class AWS_DNS implements DNSInterface {
         def parser = new JsonSlurper()
         String vars = JsonOutput.prettyPrint(JsonOutput.toJson(resourceConfig))
         def json = parser.parseText(vars)
-        this.context.writeFile file: './terraform/terraform.tfvars.json', text: vars
+        this.context.writeFile file: './terraform/terraform.tfvars.json', readJSON text: vars
         this.context.dir('./terraform') {
             this.context.sh 'terraform init'
             this.context.sh 'terraform validate'
