@@ -10,9 +10,10 @@ class AWS_DNS implements DNSInterface {
         println 'AWS_DNS constructor'
     }
 
-    def void addRecord() {
+    def Map addRecord(Map resourceConfig) {
         println 'add DNS record with AWS'
         println 'cat ./../../../resources/myscript'.execute().text
+        return resourceConfig
     }
 
     def String getThing() {

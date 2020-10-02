@@ -1,5 +1,5 @@
 package common.DNS
 
 interface DNSInterface {
-    void addRecord()
+    void addRecord(Map resourceConfig)
 }

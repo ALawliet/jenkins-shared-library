@@ -6,10 +6,10 @@ class AWS {
     def context
     def config
 
-    AWS(pipelineContext, Map config) {
+    AWS(pipelineContext, Map providerConfig) {
         println 'AWS constructor'
         this.context = pipelineContext
-        this.config = config
+        this.providerConfig = providerConfig
     }
 
     def AWS_DNS DNS() {
