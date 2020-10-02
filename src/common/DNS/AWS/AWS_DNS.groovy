@@ -42,15 +42,18 @@ class AWS_DNS implements DNSInterface {
         }
     }
 
-    def void executeTerraform2() {
+    def void executeTerraformWithVars(Map resourceConfig) {
         def terraformscript = this.context.libraryResource './terraform/main.tf'
         this.context.writeFile file: './terraform/main.tf', text: terraformscript
+        String vars = JsonOutput.prettyPrint(JsonOutput.toJson(resourceConfig))
+        this.context.writeFile file: './terraform/terraform.tfvars.json', text: vars
         this.context.dir('./terraform') {
             this.context.sh 'terraform init'
             this.context.sh 'terraform validate'
-            def task = 'terraform plan'.execute()
-            task.waitFor()
-            println task.text
+            this.context.sh 'terraform plan'
+            // def task = 'terraform plan'.execute()
+            // task.waitFor()
+            // println task.text
         }
     }
 }
